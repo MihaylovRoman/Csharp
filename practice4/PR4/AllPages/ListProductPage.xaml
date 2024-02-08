@@ -1,0 +1,53 @@
+﻿<Page x:Class="PR4.AllPages.ListProductPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PR4.AllPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListProductPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="450"></ColumnDefinition>
+            <ColumnDefinition Width="140"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="showDetails" Visibility="Hidden" Grid.Column="1" Width="140" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Просмотреть заказ" Click="showDetails_Click"></Button>
+        <ListView x:Name="ListProduct" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListBook_SelectionChanged" PreviewMouseRightButtonDown="ListProduct_PreviewMouseRightButtonDown" >
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить к заказу" Click="addToOrder"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Height="250" Width="200">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <Image HorizontalAlignment="Center" Grid.Row="0" Source="{Binding PathImage}"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding name}"  Grid.Row="1"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding description}" Grid.Row="2"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding Fabricator.name}" Grid.Row="3"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding price}" Grid.Row="4"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding amountDiscount}" Grid.Row="5"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+        </ListView>
+        
+
+    </Grid>
+</Page>
