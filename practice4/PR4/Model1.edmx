@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище database_model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище sport_appModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="fabricator">
           <Key>
             <PropertyRef Name="id" />
@@ -18,11 +18,11 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
-          <Property Name="point_id" Type="int" />
-          <Property Name="status_id" Type="int" />
-          <Property Name="take_code" Type="int" />
-          <Property Name="order_date" Type="date" />
-          <Property Name="delivery_date" Type="date" />
+          <Property Name="point_id" Type="int" Nullable="false" />
+          <Property Name="status_id" Type="int" Nullable="false" />
+          <Property Name="take_code" Type="int" Nullable="false" />
+          <Property Name="order_date" Type="date" Nullable="false" />
+          <Property Name="delivery_date" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="order_product">
           <Key>
@@ -38,9 +38,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="city" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="street" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="house" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="street" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="house" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -91,7 +91,7 @@
           <Property Name="id_role" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_order_pickup_point">
-          <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="0..1" />
+          <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pickup_point">
@@ -127,7 +127,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="status" Type="Self.status" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
@@ -174,7 +174,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище database_modelContainer">
+        <EntityContainer Name="Хранилище sport_appModelContainer">
           <EntitySet Name="fabricator" EntityType="Self.fabricator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order" EntityType="Self.order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="order_product" EntityType="Self.order_product" Schema="dbo" store:Type="Tables" />
@@ -217,7 +217,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="database_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="sport_appModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="fabricator">
           <Key>
             <PropertyRef Name="id" />
@@ -232,11 +232,11 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="user_id" Type="Int32" Nullable="false" />
-          <Property Name="point_id" Type="Int32" />
-          <Property Name="status_id" Type="Int32" />
-          <Property Name="take_code" Type="Int32" />
-          <Property Name="order_date" Type="DateTime" Precision="0" />
-          <Property Name="delivery_date" Type="DateTime" Precision="0" />
+          <Property Name="point_id" Type="Int32" Nullable="false" />
+          <Property Name="status_id" Type="Int32" Nullable="false" />
+          <Property Name="take_code" Type="Int32" Nullable="false" />
+          <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="pickup_point" Relationship="Self.FK_order_pickup_point" FromRole="order" ToRole="pickup_point" />
           <NavigationProperty Name="order_product" Relationship="Self.FK_order_product_order" FromRole="order" ToRole="order_product" />
           <NavigationProperty Name="status" Relationship="Self.FK_order_status" FromRole="order" ToRole="status" />
@@ -258,9 +258,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="city" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="street" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="house" Type="Int32" Nullable="false" />
           <NavigationProperty Name="orders" Relationship="Self.FK_order_pickup_point" FromRole="pickup_point" ToRole="order" />
         </EntityType>
         <EntityType Name="product">
@@ -330,7 +330,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_pickup_point">
-          <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="0..1" />
+          <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="pickup_point">
@@ -354,7 +354,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_order_status">
-          <End Role="status" Type="Self.status" Multiplicity="0..1" />
+          <End Role="status" Type="Self.status" Multiplicity="1" />
           <End Role="order" Type="Self.order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="status">
@@ -445,9 +445,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище database_modelContainer" CdmEntityContainer="database">
+        <EntityContainerMapping StorageEntityContainer="Хранилище sport_appModelContainer" CdmEntityContainer="database">
           <EntitySetMapping Name="fabricators">
-            <EntityTypeMapping TypeName="database_model.fabricator">
+            <EntityTypeMapping TypeName="sport_appModel.fabricator">
               <MappingFragment StoreEntitySet="fabricator">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -455,7 +455,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="database_model.order">
+            <EntityTypeMapping TypeName="sport_appModel.order">
               <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -468,7 +468,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="order_product">
-            <EntityTypeMapping TypeName="database_model.order_product">
+            <EntityTypeMapping TypeName="sport_appModel.order_product">
               <MappingFragment StoreEntitySet="order_product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -478,7 +478,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="pickup_point">
-            <EntityTypeMapping TypeName="database_model.pickup_point">
+            <EntityTypeMapping TypeName="sport_appModel.pickup_point">
               <MappingFragment StoreEntitySet="pickup_point">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="city" ColumnName="city" />
@@ -488,7 +488,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="products">
-            <EntityTypeMapping TypeName="database_model.product">
+            <EntityTypeMapping TypeName="sport_appModel.product">
               <MappingFragment StoreEntitySet="product">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="fabricator_id" ColumnName="fabricator_id" />
@@ -502,7 +502,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="database_model.role">
+            <EntityTypeMapping TypeName="sport_appModel.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -510,7 +510,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="status">
-            <EntityTypeMapping TypeName="database_model.status">
+            <EntityTypeMapping TypeName="sport_appModel.status">
               <MappingFragment StoreEntitySet="status">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -518,7 +518,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="database_model.sysdiagram">
+            <EntityTypeMapping TypeName="sport_appModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -529,7 +529,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
-            <EntityTypeMapping TypeName="database_model.user">
+            <EntityTypeMapping TypeName="sport_appModel.user">
               <MappingFragment StoreEntitySet="user">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />

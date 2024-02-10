@@ -15,17 +15,15 @@ using System.Windows.Shapes;
 
 namespace PR4.AllPages
 {
-    /// <summary>
-    /// Логика взаимодействия для ListProductPage.xaml
-    /// </summary>
     public partial class ListProductPage : Page
     {
         database db = new database();
         public ListProductPage()
         {
             InitializeComponent();
+            
         }
-
+        public static List<int> list_products = new List<int>();
         private void ListBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -44,8 +42,8 @@ namespace PR4.AllPages
         private void addToOrder(object sender, RoutedEventArgs e)
         {
             
-            int index = ListProduct.SelectedIndex;
-            
+            int indexProduct = ListProduct.SelectedIndex;
+            list_products.Add(indexProduct + 1);
             showDetails.Visibility = Visibility.Visible;
 
         }

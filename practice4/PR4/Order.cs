@@ -22,11 +22,11 @@ namespace PR4
     
         public int id { get; set; }
         public int user_id { get; set; }
-        public Nullable<int> point_id { get; set; }
-        public Nullable<int> status_id { get; set; }
-        public Nullable<int> take_code { get; set; }
-        public Nullable<System.DateTime> order_date { get; set; }
-        public Nullable<System.DateTime> delivery_date { get; set; }
+        public int point_id { get; set; }
+        public int status_id { get; set; }
+        public int take_code { get; set; }
+        public System.DateTime order_date { get; set; }
+        public System.DateTime delivery_date { get; set; }
     
         public virtual pickup_point pickup_point { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

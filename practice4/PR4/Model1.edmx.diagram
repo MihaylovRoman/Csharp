@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b94a62be748548f9ba12f9092161e762" Name="Diagram1">
-        <EntityTypeShape EntityType="database_model.fabricator" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.order_product" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.pickup_point" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.product" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.role" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.status" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="database_model.user" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <AssociationConnector Association="database_model.FK_product_fabricator" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_order_pickup_point" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_order_product_order" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_order_status" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_order_user" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_order_product_product" ManuallyRouted="false" />
-        <AssociationConnector Association="database_model.FK_user_role" ManuallyRouted="false" />
+      <Diagram DiagramId="c849856e33514caf8f4973db913c8034" Name="Diagram1">
+        <EntityTypeShape EntityType="sport_appModel.fabricator" Width="1.5" PointX="3" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.order" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.order_product" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.pickup_point" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.product" Width="1.5" PointX="5.25" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.role" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.status" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.sysdiagram" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sport_appModel.user" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="sport_appModel.FK_product_fabricator" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_order_pickup_point" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_order_product_order" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_order_status" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_order_user" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_order_product_product" ManuallyRouted="false" />
+        <AssociationConnector Association="sport_appModel.FK_user_role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

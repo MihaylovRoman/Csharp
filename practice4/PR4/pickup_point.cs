@@ -23,7 +23,7 @@ namespace PR4
         public int id { get; set; }
         public string city { get; set; }
         public string street { get; set; }
-        public string house { get; set; }
+        public int house { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<order> orders { get; set; }

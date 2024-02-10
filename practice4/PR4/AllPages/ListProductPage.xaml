@@ -14,7 +14,7 @@
             <ColumnDefinition Width="140"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button x:Name="showDetails" Visibility="Hidden" Grid.Column="1" Width="140" Height="50" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Просмотреть заказ" Click="showDetails_Click"></Button>
+        <Button x:Name="showDetails" Visibility="Hidden" Grid.Column="1" Width="140" Height="35" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Просмотреть заказ" Click="showDetails_Click"></Button>
         <ListView x:Name="ListProduct" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListBook_SelectionChanged" PreviewMouseRightButtonDown="ListProduct_PreviewMouseRightButtonDown" >
             <ListBox.ContextMenu>
                 <ContextMenu>

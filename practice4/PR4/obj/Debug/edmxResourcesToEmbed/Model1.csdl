@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="database_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="sport_appModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="fabricator">
     <Key>
       <PropertyRef Name="id" />
@@ -14,11 +14,11 @@
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="user_id" Type="Int32" Nullable="false" />
-    <Property Name="point_id" Type="Int32" />
-    <Property Name="status_id" Type="Int32" />
-    <Property Name="take_code" Type="Int32" />
-    <Property Name="order_date" Type="DateTime" Precision="0" />
-    <Property Name="delivery_date" Type="DateTime" Precision="0" />
+    <Property Name="point_id" Type="Int32" Nullable="false" />
+    <Property Name="status_id" Type="Int32" Nullable="false" />
+    <Property Name="take_code" Type="Int32" Nullable="false" />
+    <Property Name="order_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="delivery_date" Type="DateTime" Nullable="false" Precision="0" />
     <NavigationProperty Name="pickup_point" Relationship="Self.FK_order_pickup_point" FromRole="order" ToRole="pickup_point" />
     <NavigationProperty Name="order_product" Relationship="Self.FK_order_product_order" FromRole="order" ToRole="order_product" />
     <NavigationProperty Name="status" Relationship="Self.FK_order_status" FromRole="order" ToRole="status" />
@@ -40,9 +40,9 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="city" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="street" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="house" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="house" Type="Int32" Nullable="false" />
     <NavigationProperty Name="orders" Relationship="Self.FK_order_pickup_point" FromRole="pickup_point" ToRole="order" />
   </EntityType>
   <EntityType Name="product">
@@ -112,7 +112,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_pickup_point">
-    <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="0..1" />
+    <End Role="pickup_point" Type="Self.pickup_point" Multiplicity="1" />
     <End Role="order" Type="Self.order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="pickup_point">
@@ -136,7 +136,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_order_status">
-    <End Role="status" Type="Self.status" Multiplicity="0..1" />
+    <End Role="status" Type="Self.status" Multiplicity="1" />
     <End Role="order" Type="Self.order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="status">

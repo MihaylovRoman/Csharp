@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PR4.AllPages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,16 +21,21 @@ namespace PR4
     public partial class BasketWindow : Window
     {
         public static database entities = new database();
+        List<int> list_product = ListProductPage.list_products;
+
         public BasketWindow()
         {
-
             InitializeComponent();
+            var Cart = entities.products.Where(x => list_product.Contains(x.id)).ToList();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-            ListProduct.ItemsSource = BasketWindow.entities.products.ToList();
+            var Cart = entities.products.Where(x => list_product.Contains(x.id)).ToList();
+            ListProduct.ItemsSource = Cart;          
+            pickup.ItemsSource = entities.pickup_point.Select(x => x.city + ", " + x.street + ", " + x.house).ToList();
+            labelSum.Content = Cart.Sum(x => x.cost);
+            labelOrder.Content = entities.order_product.Count() + 1;
 
         }
 
@@ -38,9 +44,13 @@ namespace PR4
 
         }
 
-        private void del(object sender, RoutedEventArgs e)
+        private void deleteProduct(object sender, RoutedEventArgs e)
         {
-
+            int indexProduct = ListProduct.SelectedIndex;
+            list_product.RemoveAt(indexProduct);
+            ListProduct.ItemsSource = null;
+            var Cart = entities.products.Where(x => list_product.Contains(x.id)).ToList();
+            ListProduct.ItemsSource = Cart;
         }
 
         private void ListBook_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище database_modelContainer" CdmEntityContainer="database">
+  <EntityContainerMapping StorageEntityContainer="Хранилище sport_appModelContainer" CdmEntityContainer="database">
     <EntitySetMapping Name="fabricators">
-      <EntityTypeMapping TypeName="database_model.fabricator">
+      <EntityTypeMapping TypeName="sport_appModel.fabricator">
         <MappingFragment StoreEntitySet="fabricator">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="orders">
-      <EntityTypeMapping TypeName="database_model.order">
+      <EntityTypeMapping TypeName="sport_appModel.order">
         <MappingFragment StoreEntitySet="order">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -23,7 +23,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="order_product">
-      <EntityTypeMapping TypeName="database_model.order_product">
+      <EntityTypeMapping TypeName="sport_appModel.order_product">
         <MappingFragment StoreEntitySet="order_product">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="product_id" ColumnName="product_id" />
@@ -33,7 +33,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="pickup_point">
-      <EntityTypeMapping TypeName="database_model.pickup_point">
+      <EntityTypeMapping TypeName="sport_appModel.pickup_point">
         <MappingFragment StoreEntitySet="pickup_point">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="city" ColumnName="city" />
@@ -43,7 +43,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="products">
-      <EntityTypeMapping TypeName="database_model.product">
+      <EntityTypeMapping TypeName="sport_appModel.product">
         <MappingFragment StoreEntitySet="product">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="fabricator_id" ColumnName="fabricator_id" />
@@ -57,7 +57,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="roles">
-      <EntityTypeMapping TypeName="database_model.role">
+      <EntityTypeMapping TypeName="sport_appModel.role">
         <MappingFragment StoreEntitySet="role">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -65,7 +65,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="status">
-      <EntityTypeMapping TypeName="database_model.status">
+      <EntityTypeMapping TypeName="sport_appModel.status">
         <MappingFragment StoreEntitySet="status">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
@@ -73,7 +73,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="database_model.sysdiagram">
+      <EntityTypeMapping TypeName="sport_appModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
           <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -84,7 +84,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="users">
-      <EntityTypeMapping TypeName="database_model.user">
+      <EntityTypeMapping TypeName="sport_appModel.user">
         <MappingFragment StoreEntitySet="user">
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="name" ColumnName="name" />
