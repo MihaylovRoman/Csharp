@@ -11,8 +11,8 @@
             <ColumnDefinition Width="163*"></ColumnDefinition>
             <ColumnDefinition Width="35*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Button x:Name="authBtn" Content="Войти" Grid.Column="1" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Click="authBtn_Click"></Button>
-        <Button x:Name="exitBtn" Content="Выход" Grid.Column="1" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
+        <Button x:Name="authBtn" Content="Войти" Grid.Column="1" Height="35" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Click="authBtn_Click"></Button>
+        <Button x:Name="exitBtn" Content="Выход" Grid.Column="1" Height="35" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Button>
 
 
 

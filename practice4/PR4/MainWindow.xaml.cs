@@ -20,7 +20,7 @@ namespace PR4
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static SportDataBaseEn entities = new SportDataBaseEn();
+        public static database entities = new database();
         public MainWindow()
         {        
             InitializeComponent();

@@ -33,11 +33,11 @@
                             <RowDefinition Height="30"/>
                         </Grid.RowDefinitions>
                         <Image HorizontalAlignment="Center" Grid.Row="0" Source="{Binding PathImage}"/>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding name}"  Grid.Row="1"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding title}"  Grid.Row="1"/>
                         <TextBlock HorizontalAlignment="Center" Text="{Binding description}" Grid.Row="2"/>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding Fabricator.name}" Grid.Row="3"/>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding price}" Grid.Row="4"/>
-                        <TextBlock HorizontalAlignment="Center" Text="{Binding amountDiscount}" Grid.Row="5"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding fabricator.name}" Grid.Row="3"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding cost}" Grid.Row="4"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding discount}" Grid.Row="5"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

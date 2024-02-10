@@ -12,26 +12,25 @@ namespace PR4
     using System;
     using System.Collections.Generic;
     
-    public partial class Product
+    public partial class product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Product()
+        public product()
         {
-            this.Orders = new HashSet<Order>();
+            this.order_product = new HashSet<order_product>();
         }
     
         public int id { get; set; }
-        public string name { get; set; }
+        public int fabricator_id { get; set; }
+        public string title { get; set; }
         public string description { get; set; }
-        public Nullable<int> id_fabricator { get; set; }
-        public Nullable<double> price { get; set; }
-        public Nullable<int> amountDiscount { get; set; }
         public string image { get; set; }
-        public Nullable<int> count { get; set; }
-
-        public string PathImage => $"/Res/{image}";
-        public virtual Fabricator Fabricator { get; set; }
+        public int amount { get; set; }
+        public byte discount { get; set; }
+        public decimal cost { get; set; }
+    
+        public virtual fabricator fabricator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<order_product> order_product { get; set; }
     }
 }

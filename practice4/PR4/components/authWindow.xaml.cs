@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -26,20 +27,24 @@ namespace PR4.components
             InitializeComponent();
             
         }
-        SportDataBaseEn SportDataBaseEn = new SportDataBaseEn();
+        database db = new database();
         int invalidPassword = 0;
-
+        string createcapcha = "";
 
         private void auth_Click(object sender, RoutedEventArgs e)
         {
             string login = inputLogin.Text;
             string password = inputPass.Password;
             string capcha = inputCapcha.Text;
-            string createcapcha = "";
+            
 
             if (CheckUser(login, password) && capcha == createcapcha)
             {
-                // Successful login, do something
+                // Переход на страницу, если все успешно
+            }
+            else if(capcha != createcapcha)
+            {
+                MessageBox.Show("Пройдите проверку!");
             }
             else
             {
@@ -50,33 +55,31 @@ namespace PR4.components
                     imageCapcha.Text = createcapcha;
                     inputCapcha.Visibility = Visibility.Visible;
                     imageCapcha.Visibility = Visibility.Visible;
+                    invalidPassword = 0;
                 }
             }
         }
 
         public bool CheckUser(string login, string password)
         {
-            using (var context = new SportDataBaseEn())
-            {
-                var employee = context.Employees.FirstOrDefault(e => e.login == login);
+            
+            
+            var user = db.users.FirstOrDefault(e => e.login == login);
 
-                if (employee == null)
+                if (user == null)
                 {
                     MessageBox.Show("Такой пользователь не найден");
                     return false;
                 }
 
-                if (employee.password != password)
+                if (user.password != password | user.login != login)
                 {
                     MessageBox.Show("Неправильный логин или пароль");
                     return false;
-                }
-
-                // Successful login
-                // Do any additional checks or actions here
+                } 
 
                 return true;
-            }
+            
         }
 
 

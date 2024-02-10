@@ -12,18 +12,18 @@ namespace PR4
     using System;
     using System.Collections.Generic;
     
-    public partial class Role
+    public partial class role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Role()
+        public role()
         {
-            this.Employees = new HashSet<Employee>();
+            this.users = new HashSet<user>();
         }
     
         public int id { get; set; }
         public string name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<user> users { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace PR4
     /// </summary>
     public partial class BasketWindow : Window
     {
-        public static SportDataBaseEn entities = new SportDataBaseEn();
+        public static database entities = new database();
         public BasketWindow()
         {
 
@@ -29,7 +29,7 @@ namespace PR4
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            ListProduct.ItemsSource = BasketWindow.entities.Products.ToList();
+            ListProduct.ItemsSource = BasketWindow.entities.products.ToList();
 
         }
 

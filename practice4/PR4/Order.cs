@@ -12,27 +12,26 @@ namespace PR4
     using System;
     using System.Collections.Generic;
     
-    public partial class Order
+    public partial class order
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Order()
+        public order()
         {
-            this.Products = new HashSet<Product>();
+            this.order_product = new HashSet<order_product>();
         }
     
         public int id { get; set; }
-        public Nullable<System.DateTime> orderDate { get; set; }
-        public Nullable<int> id_client { get; set; }
-        public Nullable<int> id_product { get; set; }
-        public Nullable<int> countProduct { get; set; }
-        public Nullable<double> sumOrder { get; set; }
-        public Nullable<double> sumDiscount { get; set; }
-        public Nullable<int> id_pickUpPoint { get; set; }
-        public Nullable<int> receiptCode { get; set; }
+        public int user_id { get; set; }
+        public Nullable<int> point_id { get; set; }
+        public Nullable<int> status_id { get; set; }
+        public Nullable<int> take_code { get; set; }
+        public Nullable<System.DateTime> order_date { get; set; }
+        public Nullable<System.DateTime> delivery_date { get; set; }
     
-        public virtual Client Client { get; set; }
-        public virtual PickUpPoint PickUpPoint { get; set; }
+        public virtual pickup_point pickup_point { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<order_product> order_product { get; set; }
+        public virtual status status { get; set; }
+        public virtual user user { get; set; }
     }
 }

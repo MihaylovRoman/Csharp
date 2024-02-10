@@ -20,6 +20,7 @@ namespace PR4.AllPages
     /// </summary>
     public partial class ListProductPage : Page
     {
+        database db = new database();
         public ListProductPage()
         {
             InitializeComponent();
@@ -32,7 +33,7 @@ namespace PR4.AllPages
         
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            ListProduct.ItemsSource = MainWindow.entities.Products.ToList();
+            ListProduct.ItemsSource = MainWindow.entities.products.ToList();
         }
 
         private void ListProduct_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
@@ -42,7 +43,7 @@ namespace PR4.AllPages
 
         private void addToOrder(object sender, RoutedEventArgs e)
         {
-            SportDataBaseEn sportDataBaseEn = new SportDataBaseEn();
+            
             int index = ListProduct.SelectedIndex;
             
             showDetails.Visibility = Visibility.Visible;
