@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PR4.AllPages;
+using PR4.components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +22,16 @@ namespace PR4
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public static database entities = new database();
+        ListProductPage listProductPage;
+        authWindow authWindow;
+        public UserClass userClass = new UserClass();
         public MainWindow()
         {        
             InitializeComponent();
-            MainFrame1.Navigate(new AllPages.ListProductPage());
-            
+            listProductPage = new ListProductPage();
+
         }
        
         private void ListBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -46,8 +52,32 @@ namespace PR4
 
         private void authBtn_Click(object sender, RoutedEventArgs e)
         {
-            components.authWindow authWindow = new components.authWindow();
+            authWindow = new authWindow();
             authWindow.Show();
+            Close();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visibility = Visibility.Hidden;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (userClass.role == "Клиент")
+            {
+                listProductPage.addOrder.IsEnabled = true;
+            }
+            else if (userClass.role == "Сотрудник")
+            {
+
+            }
+            else
+            {
+                listProductPage.addOrder.IsEnabled = false;
+            }
+            MainFrame1.Navigate(listProductPage);
         }
     }
 }

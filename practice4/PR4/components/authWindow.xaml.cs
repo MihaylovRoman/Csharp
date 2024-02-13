@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PR4.AllPages;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Drawing;
@@ -17,15 +18,13 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace PR4.components
 {
-    /// <summary>
-    /// Логика взаимодействия для authWindow.xaml
-    /// </summary>
+
     public partial class authWindow : Window
-    {
+    { 
         public authWindow()
         {
             InitializeComponent();
-            
+
         }
         database db = new database();
         int invalidPassword = 0;
@@ -36,13 +35,22 @@ namespace PR4.components
             string login = inputLogin.Text;
             string password = inputPass.Password;
             string capcha = inputCapcha.Text;
-            
+
 
             if (CheckUser(login, password) && capcha == createcapcha)
             {
-                // Переход на страницу, если все успешно
+                var usersql = db.users.FirstOrDefault(x => x.login == login);
+                string role = usersql.role.name.ToString();
+
+                MainWindow main = new MainWindow();
+                main.userClass.id = usersql.id;
+                main.userClass.login = usersql.login;
+                main.userClass.id_role = usersql.id_role;
+                main.userClass.role = role;
+                main.Show();
+                Close();
             }
-            else if(capcha != createcapcha)
+            else if (capcha != createcapcha)
             {
                 MessageBox.Show("Пройдите проверку!");
             }
@@ -62,24 +70,24 @@ namespace PR4.components
 
         public bool CheckUser(string login, string password)
         {
-            
-            
+
+
             var user = db.users.FirstOrDefault(e => e.login == login);
 
-                if (user == null)
-                {
-                    MessageBox.Show("Такой пользователь не найден");
-                    return false;
-                }
+            if (user == null)
+            {
+                MessageBox.Show("Такой пользователь не найден");
+                return false;
+            }
 
-                if (user.password != password | user.login != login)
-                {
-                    MessageBox.Show("Неправильный логин или пароль");
-                    return false;
-                } 
+            if (user.password != password | user.login != login)
+            {
+                MessageBox.Show("Неправильный логин или пароль");
+                return false;
+            }
 
-                return true;
-            
+            return true;
+
         }
 
 
@@ -89,7 +97,7 @@ namespace PR4.components
             string capchaText = "";
             string ALF = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM";
 
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 capchaText += ALF[rnd.Next(ALF.Length)];
             }
@@ -99,8 +107,8 @@ namespace PR4.components
 
 
         }
-        
 
-        
+
+
     }
 }

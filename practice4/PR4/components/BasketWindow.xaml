@@ -68,7 +68,7 @@
             <ComboBox x:Name="pickup" Width="180" Height="20"/>
         </StackPanel>
         
-        <Button Grid.Column="1" Grid.Row="4" Width="300" HorizontalAlignment="Center"  Content="Сформировать заказ" Height="20"/>
+        <Button x:Name="createOrder" Grid.Column="1" Grid.Row="4" Width="300" HorizontalAlignment="Center"  Content="Сформировать заказ" Height="20" Click="createOrder_Click" />
 
     </Grid>
 </Window>

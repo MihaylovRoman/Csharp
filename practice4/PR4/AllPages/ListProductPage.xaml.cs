@@ -17,11 +17,15 @@ namespace PR4.AllPages
 {
     public partial class ListProductPage : Page
     {
-        database db = new database();
+        database db = MainWindow.entities;
+        MainWindow mainWindow;
+        BasketWindow basketWindow;
+        public static List<productClass> products;
         public ListProductPage()
         {
             InitializeComponent();
-            
+            basketWindow = new BasketWindow(this);
+
         }
         public static List<int> list_products = new List<int>();
         private void ListBook_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,17 +45,32 @@ namespace PR4.AllPages
 
         private void addToOrder(object sender, RoutedEventArgs e)
         {
-            
+
             int indexProduct = ListProduct.SelectedIndex;
+
+
+
+            var prod = db.products.FirstOrDefault(x => x.id == indexProduct);
+            productClass newProduct = new productClass(prod.id, prod.fabricator_id, prod.title, prod.description, prod.image, prod.amount, prod.discount, prod.cost);
+
             list_products.Add(indexProduct + 1);
+
+            products.Add(newProduct);
+            var Cart = db.products.Where(x => list_products.Contains(x.id)).ToList();
+
+
             showDetails.Visibility = Visibility.Visible;
+
+
+            basketWindow.labelSum.Content = Cart.Sum(x => x.cost);
+
+
+            basketWindow.ListProduct.ItemsSource = Cart;
 
         }
 
         private void showDetails_Click(object sender, RoutedEventArgs e)
         {
-            
-            BasketWindow basketWindow = new BasketWindow();
             basketWindow.Show();
         }
     }

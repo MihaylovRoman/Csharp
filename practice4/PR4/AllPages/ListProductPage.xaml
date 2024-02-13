@@ -18,7 +18,7 @@
         <ListView x:Name="ListProduct" Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListBook_SelectionChanged" PreviewMouseRightButtonDown="ListProduct_PreviewMouseRightButtonDown" >
             <ListBox.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Добавить к заказу" Click="addToOrder"/>
+                    <MenuItem x:Name="addOrder" Header="Добавить к заказу" Click="addToOrder"/>
                 </ContextMenu>
             </ListBox.ContextMenu>
             <ListView.ItemTemplate>
